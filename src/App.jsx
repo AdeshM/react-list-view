@@ -1,10 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
 import Demo from "./containers/DemoListing/Demo";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { router } from "./router";
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -34,7 +38,10 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
         <h2>Demo Listing - Getting along with RTQ</h2>
-        <Demo />
+
+        {/* <Demo /> */}
+
+        <RouterProvider router={router} />
 
         {/* <pre>
           Create
@@ -45,6 +52,7 @@ function App() {
           <li>- Mutation > Invalidation</li>
         </pre> */}
       </>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
